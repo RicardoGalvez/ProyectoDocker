@@ -50,10 +50,13 @@ public class CitaController {
     
     @DeleteMapping("/{id}")
     public ResponseEntity<?> eliminarCita(@PathVariable Long id) {
+    	System.out.println("Recibida solicitud DELETE para ID: " + id);
+    	
         if (!citaRepository.existsById(id)) {
             return ResponseEntity.notFound().build();
         }
         citaRepository.deleteById(id);
+        System.out.println("Cita eliminada: " + id);
         return ResponseEntity.ok("Cita eliminada correctamente.");
     }
 
